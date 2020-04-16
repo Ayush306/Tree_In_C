@@ -109,7 +109,6 @@ void insertNode(int d)
 }
  Delete(NODE *root,int element_del)
 {
-
     //Delete A Leaf Node
     current = root;
     while(current)
@@ -134,6 +133,7 @@ void insertNode(int d)
       {
 
         p->left = NULL;
+         free(current);
 
       }
     else
@@ -141,6 +141,7 @@ void insertNode(int d)
         if(current == p->left)
        {
          p->left = NULL;
+          free(current);
        }
     }
     else                              //case 1 when the node have left child
@@ -150,12 +151,14 @@ void insertNode(int d)
           {
             p->right = current->left;
             current->left = NULL;
+             free(current);
           }
           else
             if(current == p->left)     //(ii)node exist left side of the parent
             {
              p->left = current->left;
               current->left = NULL;
+               free(current);
             }
        }
     else                             //case 2 when the node have right child
@@ -166,6 +169,7 @@ void insertNode(int d)
           {
               p->left = current->right;
               current->left = NULL;
+               free(current);
           }
           else
 
@@ -173,6 +177,7 @@ void insertNode(int d)
             {
               p->right = current->right;
               current->right = NULL;
+               free(current);
             }
 
       }
@@ -215,7 +220,7 @@ void insertNode(int d)
           }
       }
 
-  //  free(current);
+
 
 
 }
